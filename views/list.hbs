@@ -1,16 +1,12 @@
 <h1>
     Courses
 </h1>
+<br>
+<a href='/'>Homepage</a>
+<br>
 
-<table>
-    <tr>
-        <th>ID</th>>
-        <th>Name</th>>
-    </tr>
+<div>
     {{#each data}}
-    <tr>
-        <td>{{this.courseId}}</td>>
-        <td>{{this.courseName}}</td>>
-    </tr>
+    <p>{{this}}</p>
     {{/each}}
-</table>
+</div>

@@ -1,58 +1,35 @@
 const express = require("express");
-const mongoose = require("mongoose");
 
 const router = express.Router();
-const CourseModel = mongoose.model("Course")
-
-
+const CourseModel = require('../model/course.model');
 
 router.get("/add", (req, res)=>{
     res.render("add-course")
 })
 
-//setting
-// var course = new CourseModel();
-// course.courseName = "NodeJS";
-// course.courseId = "2";
-// course.save();
+router.post("/add", async (req, res)=>{
+    try {
+        await CourseModel.create({
+            courseName: req.body.courseName,
+            courseDuration: req.body.courseDuration,
+            courseFee: req.body.courseFee,
+        });
 
-router.post("/add", (req, res)=>{
-
-    var course = new CourseModel();
-    course.courseName = req.body;
-    course.courseDuration = req.body.courseDuration;
-    course.courseFee = req.body.courseFee;
-    course.courseId = Math.ceil(Math.random() * 100000000);
-
-    course.save((error, docs)=>{
-        if(!error)
-            {
-                //res.redirect("/course/list")
-                res.json({ message : "succesfull", status : "OK"});
-            }
-        else
-            {
-                res.send("Error Occured");
-            }
-    });
-
-    res.render("add-course");
+        res.render("add-course", {message: "Course added!"});
+    } catch (error) {
+        console.log(error.message);
+        res.send("Error Occured");
+    }
 })
 
-router.get("/list", (req, res)=>{
-
-    //Getting
-    CourseModel.find((error, docs)=>{
-        if(!error)
-            {
-                console.log(docs);
-                res.render("list", { data : docs });
-            }
-        else
-            {
-                res.send("Error");
-            }  
-    });
+router.get("/list", async (req, res)=>{
+    try {
+        const courses = await CourseModel.find();
+        res.render("list", { data : courses });
+    } catch (error) {
+        console.log(error.message);
+        res.send("Error Occured");
+    }
 });
 
 module.exports = router;
