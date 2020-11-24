@@ -5,7 +5,7 @@ const path = require("path");
 const expressHandlerbars = require("express-handlebars");
 const bodyparser = require("body-parser");
 const connectDatabase = require('./model/index');
-
+const port = process.env.port || 8080;
 const CourseController = require("./controllers/courses");
 
 app.use(bodyparser.urlencoded({
@@ -26,7 +26,7 @@ app.get("/", (req, res)=>{
 
 app.use("/course", CourseController)
 
-app.listen("3000", ()=> {
-    console.log(`Server is listening on http://localhost:3000`);
+app.listen("8080", ()=> {
+    console.log(`Server is listening on http://localhost:8080`);
     connectDatabase();
 });
