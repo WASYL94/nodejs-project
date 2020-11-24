@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const CourseModel = mongoose.model("Course")
 
+
+
 router.get("/add", (req, res)=>{
     res.render("add-course")
 })
@@ -22,8 +24,8 @@ router.post("/add", (req, res)=>{
     course.courseFee = req.body.courseFee;
     course.courseId = Math.ceil(Math.random() * 100000000);
 
-    course.save((err, doc)=>{
-        if(!err)
+    course.save((error, docs)=>{
+        if(!error)
             {
                 //res.redirect("/course/list")
                 res.json({ message : "succesfull", status : "OK"});
@@ -34,15 +36,14 @@ router.post("/add", (req, res)=>{
             }
     });
 
-
-    res.render("add-course")
+    res.render("add-course");
 })
 
 router.get("/list", (req, res)=>{
 
     //Getting
-    CourseModel.find((err, docs)=>{
-        if(!err)
+    CourseModel.find((error, docs)=>{
+        if(!error)
             {
                 console.log(docs);
                 res.render("list", { data : docs });

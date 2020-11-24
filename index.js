@@ -7,6 +7,7 @@ const bodyparser = require("body-parser");
 
 const CourseController = require("./controllers/courses")
 
+
 application.use(bodyparser.urlencoded({
     extended : true
 }));
