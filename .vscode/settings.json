@@ -4,5 +4,5 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/e919e435-9866-4cdf-8912-557d6097db42/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/azurewebappnodejs"
+    "appService.defaultWebAppToDeploy": "/subscriptions/e919e435-9866-4cdf-8912-557d6097db42/resourceGroups/azurewebapp/providers/Microsoft.Web/sites/azurewebappnodejs"
 }
