@@ -1,12 +1,16 @@
+<h1>
+    Add New Course
+</h1>
+<br />
 <a href='/course/list'>Courses List</a>
 <a href='/'>Homepage</a>
-<br>
-<br>
+<br />
+<br />
 <form action="/course/add" method="POST">
     <p>
-        <label>Course Name</label><input value="" name="courseName" /><br />
-        <label>Course Duration</label><input value="" name="courseDuration" /><br />
-        <label>Course Fee</label><input value="" name="courseFee" />
+        <label>Course Name</label> <input value="" name="courseName" /><br /><br />
+        <label>Course Duration</label> <input value="" name="courseDuration" /><br /><br />
+        <label>Course Fee</label> <input value="" name="courseFee" /><br /><br />
         <button type="submit">Add Course</button>
     </p>
     <p style="font-size: 36px; color: green;">{{message}}</p>
