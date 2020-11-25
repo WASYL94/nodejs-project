@@ -12,7 +12,7 @@ router.post("/add", async (req, res)=>{
         await CourseModel.create({
             courseName: req.body.courseName,
             courseDuration: req.body.courseDuration,
-            courseFee: req.body.courseFee,
+            courseFee: req.body.courseFee
         });
 
         res.render("add-course", {message: "Course added!"});
